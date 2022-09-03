@@ -57,6 +57,10 @@ Then import  IPstore library into your own code.
 	import "github.com/teezzan/ipstore"
 
 
+Documentation
+----------
+The doc for this library can be found on [pkg.go.dev](https://pkg.go.dev/github.com/teezzan/ipstore#pkg-functions).
+
 Architecture
 -----------
 ![Logo](./images/arch.jpg)
