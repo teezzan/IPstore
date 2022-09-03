@@ -18,7 +18,7 @@ How does your code work?
 -------
 The most important part of the codebase is the "Storage" implementation. The "Storage" consists of two storage variables or mechanism.
 - *`IpAddressTallyMap`*: A hashtable for mapping an item (IP address) to a count(number).
-- *`FrequencyLookupTable`*: An array whose index is the frequency of occurrence of items and the value, the collection of such item. To ensure an efficient search, insert and delete operation, the collection is modelled as a hashtable with a runtime complexity of an amortized `O(1)`.
+- *`FrequencyLookupTable`*: An array whose index is the frequency of occurrence of items and the value, a collection of such item. To ensure an efficient search, insert and delete operation, the collection is modelled as a hashtable with a runtime complexity of an amortized `O(1)`.
 
 The methods of the "Storage" implementation are enumerated as follows.
 - *`Truncate`*: This properly reinitialized the storage variables. A dummy hashmap is inserted at index 0 of *`FrequencyLookupTable`* because there should be no values there.

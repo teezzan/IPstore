@@ -6,6 +6,9 @@ var emptyStruct struct{}
 // A DefaultStorage defines a default Storage interface.
 // This is the starting point of extending the library to work with other storage.
 type DefaultStorage struct {
+	// IpAddressTallyMap is a hashtable for mapping an item to a count.
+    // FrequencyLookupTable is an array whose index is the frequency of 
+	// occurrence of items and the value, a collection of such item.
 	IpAddressTallyMap    map[string]int
 	FrequencyLookupTable []map[string]struct{}
 }
