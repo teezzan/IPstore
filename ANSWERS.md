@@ -37,4 +37,6 @@ The first data structure that comes to mind after reading the problem is a heap.
 
 How would you test this?
 ----
-//stress test
+- Unit tests: These are basic but important. Passing into the functions and examining the output is the way I would do this (I actually did. Check out the [README.md](README.md) and [ipstore_test.go](ipstore_test.go) )
+  
+- Benchmarking: This is a "library" that is required to be fast. Hence, a benchmark test is something I would invest in. I would simulate the insertion (i.e handle the requests) of IP addresses and time the operation across multiple value of stored IP addresses. `Top100()` can also be testes in this way to. ( I did this benchmark. Check out the [README.md](README.md) and [benchmark_test.go](benchmark_test.go) for more details. )

@@ -3,7 +3,8 @@ package storage
 var _ Storage = (*DefaultStorage)(nil)
 var emptyStruct struct{}
 
-// DefaultStorage defines a default Storage interface.
+// A DefaultStorage defines a default Storage interface.
+// This is the starting point of extending the library to work with other storage.
 type DefaultStorage struct {
 	IpAddressTallyMap    map[string]int
 	FrequencyLookupTable []map[string]struct{}
