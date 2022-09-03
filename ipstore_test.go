@@ -48,3 +48,76 @@ func TestRequestHandled(t *testing.T) {
 	}
 }
 
+func TestTop100(t *testing.T) {
+	isList1 := generateIPList(100)
+	isListLen50 := generateIPList(50)
+	isListLen70 := generateIPList(70)
+
+	tests := []struct {
+		name string
+		seed []string
+		want []string
+	}{
+		{
+			name: "output should be of length 100",
+			seed: isList1,
+			want: isList1,
+		},
+		{
+			name: "output should be of length 100",
+			seed: isListLen50,
+			want: isListLen50,
+		},
+		{
+			name: "output should be of length 100",
+			seed: isListLen70,
+			want: isListLen70,
+		},
+	}
+	for _, tt := range tests {
+		Clear()
+		insertIntoIPstore(tt.seed)
+		sort.Strings(tt.seed)
+		t.Run(tt.name, func(t *testing.T) {
+			got := Top100()
+			sort.Strings(got)
+
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Top100() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func generateIPList(limit int) []string {
+	faker := faker.New()
+	var outputIP []string
+	for i := 0; i < limit; i++ {
+		outputIP = append(outputIP, faker.Internet().Ipv4())
+	}
+	return outputIP
+}
+
+func insertIntoIPstore(ips []string) {
+	for _, ip_address := range ips {
+		RequestHandled(ip_address)
+	}
+}
+
+func TestClear(t *testing.T) {
+	tests := []struct {
+		name string
+	}{
+		{
+			name: "should return empty list",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			Clear()
+			if got := Top100(); len(got) != 0 {
+				t.Errorf("Top100() = %v, want []", got)
+			}
+		})
+	}
+}
