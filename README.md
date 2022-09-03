@@ -27,17 +27,17 @@ Using this library is as simple as running the following
 ```golang
 package main
 
-import 	"github.com/teezzan/IPStore"
+import 	"github.com/teezzan/IPstore"
 
 func main() {
     // Stores the IP Address 192.34.56.321 in the memory storage
-	IPStore.RequestHandled("192.34.56.321") 
+	IPstore.RequestHandled("192.34.56.321") 
     
     // Increments the IP Address 192.54.56.333 count by 1.
-	IPStore.RequestHandled("192.34.56.321") 
+	IPstore.RequestHandled("192.34.56.321") 
 
     // Fetch the top 100 frequent IP addresses
-    top100 := IPStore.Top100()
+    top100 := IPstore.Top100()
 
     // Removes all stored IP addresses.
     IPStore.Clear()
