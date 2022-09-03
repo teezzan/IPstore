@@ -53,3 +53,24 @@ func (s *DefaultStorage) Insert(ip_address string) {
 	}
 }
 
+// Fetch implements the Storage Fetch interface
+func (s *DefaultStorage) Fetch(limit int64) []string {
+	output := make([]string, limit) // pre-allocate needed memory to ensure amortized insert time.
+
+	outputIterator := 0
+	maxArrayCursor := 0
+	for outputIterator < int(limit) && len(s.FrequencyLookupTable) > maxArrayCursor {
+		freqHashTable := s.FrequencyLookupTable[len(s.FrequencyLookupTable)-maxArrayCursor-1]
+		if len(freqHashTable) != 0 {
+			for k := range freqHashTable {
+				output[outputIterator] = k
+				outputIterator++
+				if outputIterator == int(limit) {
+					break
+				}
+			}
+		}
+		maxArrayCursor++
+	}
+	return output
+}
