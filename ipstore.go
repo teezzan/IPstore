@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/ipAddress-tracker/storage"
+	"github.com/teezzan/ipstore/storage"
 )
 
 var validate *validator.Validate

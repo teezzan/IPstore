@@ -1,4 +1,4 @@
-module github.com/ipAddress-tracker
+module github.com/teezzan/ipstore
 
 go 1.19
 
