@@ -74,9 +74,9 @@ Run `make tests` to run tests.
 
 Benchmark Results
 -----
-Ensure you have considerable memory before running the benchmark tests with `make benchmark`. You can also tweak the nunmber of IP addresses to choose from by editing the variable `ipLookupSize` (defaults to a billion) in `./benchmark_test.go`. 
+Ensure you have considerable memory before running the benchmark tests with `make benchmark`. You can also tweak the number of IP addresses to choose from by editing the variable `ipLookupSize` (defaults to a billion) in `./benchmark_test.go`. 
 
-Below is the result of such benchmark.
+Below is the result of such benchmark with a billion unique ip addresses.
 ```bash
 goos: linux
 goarch: amd64
