@@ -16,19 +16,19 @@ What is the runtime complexity of each function?
 
 How does your code work?
 -------
-The most important part of the codebase is the "Storage" implementation. The "Storage" consists of two storage varibles or mechanism.
+The most important part of the codebase is the "Storage" implementation. The "Storage" consists of two storage variables or mechanism.
 - *`IpAddressTallyMap`*: A hashtable for mapping an item (IP address) to a count(number).
-- *`FrequencyLookupTable`*: An array whose index is the frequency of occurence of items and the value, the collection of such item. To ensure an efficient search, insert and delete operation, the collection is modelled as a hashtable with a runtime complexity of an amortized `O(1)`.
+- *`FrequencyLookupTable`*: An array whose index is the frequency of occurrence of items and the value, the collection of such item. To ensure an efficient search, insert and delete operation, the collection is modelled as a hashtable with a runtime complexity of an amortized `O(1)`.
 
 The methods of the "Storage" implementation are enumerated as follows.
-- *`Truncate`*: This properly reinitializes the storage variables. A dummy hashmap is insterted at index 0 of *`FrequencyLookupTable`* because there should be no values there.
+- *`Truncate`*: This properly reinitialized the storage variables. A dummy hashmap is inserted at index 0 of *`FrequencyLookupTable`* because there should be no values there.
 - *`Init`*: This initializes the storage variables using *Truncate*.
-- *`Insert`*: During an insert operation, the code searches *`IpAddressTallyMap`* for the existence of the argument `ip_address`. The current "count" value of key `ip_address` (defaults to `0`) in  *`IpAddressTallyMap`* is incremented by one and updated. In the array *`FrequencyLookupTable`*, at the index value of `ip_address` current "count" value, `ip_address` is added to the hashtable found there and removed from its former index.
+- *`Insert`*: During an insert operation, the code searches *`IpAddressTallyMap`* for the existence of the argument `ipAddress`. The current "count" value of key `ipAddress` (defaults to `0`) in  *`IpAddressTallyMap`* is incremented by one and updated. In the array *`FrequencyLookupTable`*, at the index value of `ipAddress` current "count" value, `ipAddress` is added to the hashtable found there and removed from its former index.
 - *`Fetch`*: A fetch involves starting from the largest index 0f the array (*`FrequencyLookupTable`*) and extracting the keys inside the hashable found there. This continues until the `limit` (number of requested top items) is reached. It is optimized to skip over empty arrays.
 
 The exposed functions of the library are similar to the ones explained above but with validation of IP address inputs.
 
-The most intersting thing about this implementation is its heavy dependence on the runtime complexity of a hashtable being an amortized O(1). I used Go maps since it is a great implementation of an efficient hashtable.
+The most interesting thing about this implementation is its heavy dependence on the runtime complexity of a hashtable being an amortized O(1). I used Go maps since it is a great implementation of an efficient hashtable.
 
 
 What other approaches did you decide not to pursue?

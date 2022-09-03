@@ -16,12 +16,12 @@ func init() {
 }
 
 // RequestHandled accepts a string containing an IP address, stores and keeps count of the number of hit time.
-func RequestHandled(ip_address string) error {
-	errs := validate.Var(ip_address, "required,ip")
+func RequestHandled(ipAddress string) error {
+	errs := validate.Var(ipAddress, "required,ip")
 	if errs != nil {
-		return fmt.Errorf("invalid arg: %s is not a valid ip address", ip_address)
+		return fmt.Errorf("invalid arg: %s is not a valid ip address", ipAddress)
 	}
-	ipStore.Insert(ip_address)
+	ipStore.Insert(ipAddress)
 	return nil
 }
 

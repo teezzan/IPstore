@@ -28,25 +28,25 @@ func (s *DefaultStorage) Truncate() {
 }
 
 // Insert implements the Storage Insert interface
-func (s *DefaultStorage) Insert(ip_address string) {
+func (s *DefaultStorage) Insert(ipAddress string) {
 	var initialValue int
 
-	if val, ok := s.IpAddressTallyMap[ip_address]; ok {
+	if val, ok := s.IpAddressTallyMap[ipAddress]; ok {
 		initialValue = val
 	}
 	finalValue := initialValue + 1
-	s.IpAddressTallyMap[ip_address] = finalValue
+	s.IpAddressTallyMap[ipAddress] = finalValue
 
 	if len(s.FrequencyLookupTable) == finalValue {
 		newHashTable := map[string]struct{}{
-			ip_address: {},
+			ipAddress: {},
 		}
 		s.FrequencyLookupTable = append(s.FrequencyLookupTable, newHashTable)
 	} else {
-		s.FrequencyLookupTable[finalValue][ip_address] = emptyStruct
+		s.FrequencyLookupTable[finalValue][ipAddress] = emptyStruct
 	}
 	if finalValue > 1 {
-		delete(s.FrequencyLookupTable[initialValue], ip_address)
+		delete(s.FrequencyLookupTable[initialValue], ipAddress)
 	}
 }
 

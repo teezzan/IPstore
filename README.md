@@ -30,17 +30,17 @@ package main
 import 	"github.com/teezzan/ipstore"
 
 func main() {
-    // Stores the IP Address 192.34.56.321 in the memory storage
-	ipstore.RequestHandled("192.34.56.321") 
+	 // Stores the IP Address 192.34.56.321 in the memory storage
+	 ipstore.RequestHandled("192.34.56.321") 
     
-    // Increments the IP Address 192.54.56.333 count by 1.
-	ipstore.RequestHandled("192.34.56.321") 
+	 // Increments the IP Address 192.54.56.333 count by 1.
+	 ipstore.RequestHandled("192.34.56.321") 
 
-    // Fetch the top 100 frequent IP addresses
-    top100 := ipstore.Top100()
-
-    // Removes all stored IP addresses.
-    ipstore.Clear()
+	 // Fetch the top 100 frequent IP addresses
+	 top100 := ipstore.Top100()
+	 
+	 // Removes all stored IP addresses. 
+	 ipstore.Clear()
 }
 
 ```
@@ -50,11 +50,11 @@ Installation
 
 Use go get.
 
-	go get github.com/teezzan/IPStore
+	go get github.com/teezzan/ipstore
 
 Then import  IPstore library into your own code.
 
-	import "github.com/teezzan/IPStore"
+	import "github.com/teezzan/ipstore"
 
 
 Architecture

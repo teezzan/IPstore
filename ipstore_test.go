@@ -10,7 +10,7 @@ import (
 
 func TestRequestHandled(t *testing.T) {
 	type args struct {
-		ip_address string
+		ipAddress string
 	}
 	tests := []struct {
 		name    string
@@ -20,28 +20,28 @@ func TestRequestHandled(t *testing.T) {
 		{
 			name: "test incorrect ip address input",
 			args: args{
-				ip_address: "evisit.com",
+				ipAddress: "evisit.com",
 			},
 			wantErr: true,
 		},
 		{
 			name: "test correct ipv4 address input",
 			args: args{
-				ip_address: "102.89.32.126",
+				ipAddress: "102.89.32.126",
 			},
 			wantErr: false,
 		},
 		{
 			name: "test correct ipv6 address input",
 			args: args{
-				ip_address: "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+				ipAddress: "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 			},
 			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := RequestHandled(tt.args.ip_address); (err != nil) != tt.wantErr {
+			if err := RequestHandled(tt.args.ipAddress); (err != nil) != tt.wantErr {
 				t.Errorf("RequestHandled() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
@@ -90,17 +90,17 @@ func TestTop100(t *testing.T) {
 }
 
 func generateIPList(limit int) []string {
-	faker := faker.New()
+	newFaker := faker.New()
 	var outputIP []string
 	for i := 0; i < limit; i++ {
-		outputIP = append(outputIP, faker.Internet().Ipv4())
+		outputIP = append(outputIP, newFaker.Internet().Ipv4())
 	}
 	return outputIP
 }
 
 func insertIntoIPstore(ips []string) {
-	for _, ip_address := range ips {
-		RequestHandled(ip_address)
+	for _, ipAddress := range ips {
+		_ = RequestHandled(ipAddress)
 	}
 }
 
