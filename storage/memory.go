@@ -18,16 +18,13 @@ func NewStorage() *DefaultStorage {
 
 // Init implements the Storage Init interface
 func (s *DefaultStorage) Init() {
-	s.Truncate()
+	cleanFrequencyLookupTable := make([]map[string]struct{}, 1)
+	s.FrequencyLookupTable = cleanFrequencyLookupTable
+	s.IpAddressTallyMap = make(map[string]int)
 }
 
 func (s *DefaultStorage) Truncate() {
-	dummyHashTable := map[string]struct{}{
-		"": {},
-	}
-	cleanFrequencyLookupTable := make([]map[string]struct{}, 1)
-	s.FrequencyLookupTable = append(cleanFrequencyLookupTable, dummyHashTable)
-	s.IpAddressTallyMap = make(map[string]int)
+	s.Init()
 }
 
 // Insert implements the Storage Insert interface
@@ -72,5 +69,5 @@ func (s *DefaultStorage) Fetch(limit int64) []string {
 		}
 		maxArrayCursor++
 	}
-	return output
+	return output[0:outputIterator] //removes unused pre-allocated space
 }
